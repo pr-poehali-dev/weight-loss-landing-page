@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -5,6 +6,43 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 3,
+    hours: 14,
+    minutes: 23,
+    seconds: 45
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        let { days, hours, minutes, seconds } = prev;
+        
+        if (seconds > 0) {
+          seconds--;
+        } else {
+          seconds = 59;
+          if (minutes > 0) {
+            minutes--;
+          } else {
+            minutes = 59;
+            if (hours > 0) {
+              hours--;
+            } else {
+              hours = 23;
+              if (days > 0) {
+                days--;
+              }
+            }
+          }
+        }
+        
+        return { days, hours, minutes, seconds };
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
   const benefits = [
     {
       icon: "TrendingDown",
@@ -56,19 +94,22 @@ const Index = () => {
       name: "Анна Петрова",
       age: "28 лет",
       result: "-4.5 кг за 3 недели",
-      text: "Не верила, что можно похудеть без голодовок. Но курс действительно работает! Чувствую себя увереннее."
+      text: "Не верила, что можно похудеть без голодовок. Но курс действительно работает! Чувствую себя увереннее.",
+      image: "/img/3a18e751-1816-4f64-8cbd-88d35b451828.jpg"
     },
     {
       name: "Мария Сидорова", 
       age: "35 лет",
       result: "-6 кг за 21 день",
-      text: "Домашние тренировки идеально вписались в мой график. Дети не мешают заниматься собой."
+      text: "Домашние тренировки идеально вписались в мой график. Дети не мешают заниматься собой.",
+      image: "/img/d0aae556-e60a-4955-b266-a3267d4d4fbe.jpg"
     },
     {
       name: "Елена Козлова",
       age: "42 года", 
       result: "-5.2 кг за 3 недели",
-      text: "Наконец-то нашла систему, которая работает. Рекомендую всем своим подругам!"
+      text: "Наконец-то нашла систему, которая работает. Рекомендую всем своим подругам!",
+      image: "/img/dc3005f0-1734-4303-a15b-2bf287925f8d.jpg"
     }
   ];
 
@@ -225,8 +266,12 @@ const Index = () => {
               <Card key={index} className="hover:shadow-lg transition-all">
                 <CardContent className="p-8">
                   <div className="text-center mb-6">
-                    <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <Icon name="User" size={32} className="text-white" />
+                    <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
+                      <img 
+                        src={testimonial.image} 
+                        alt={`Результаты ${testimonial.name}`}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
                     <p className="text-gray-600">{testimonial.age}</p>
@@ -263,12 +308,40 @@ const Index = () => {
           </p>
           
           <div className="bg-white/10 rounded-2xl p-8 mb-8 backdrop-blur-sm">
-            <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center justify-center mb-6">
               <Icon name="Clock" size={24} className="mr-3" />
-              <span className="text-xl font-semibold">Только до конца недели!</span>
+              <span className="text-xl font-semibold">Акция заканчивается через:</span>
             </div>
-            <p className="text-lg opacity-90">
-              После это цена вырастет до 1990 ₽
+            
+            <div className="grid grid-cols-4 gap-4 mb-4">
+              <div className="text-center">
+                <div className="bg-white/20 rounded-lg p-3 mb-2">
+                  <div className="text-2xl font-bold">{timeLeft.days}</div>
+                </div>
+                <div className="text-sm opacity-80">дней</div>
+              </div>
+              <div className="text-center">
+                <div className="bg-white/20 rounded-lg p-3 mb-2">
+                  <div className="text-2xl font-bold">{timeLeft.hours}</div>
+                </div>
+                <div className="text-sm opacity-80">часов</div>
+              </div>
+              <div className="text-center">
+                <div className="bg-white/20 rounded-lg p-3 mb-2">
+                  <div className="text-2xl font-bold">{timeLeft.minutes}</div>
+                </div>
+                <div className="text-sm opacity-80">минут</div>
+              </div>
+              <div className="text-center">
+                <div className="bg-white/20 rounded-lg p-3 mb-2">
+                  <div className="text-2xl font-bold animate-pulse">{timeLeft.seconds}</div>
+                </div>
+                <div className="text-sm opacity-80">секунд</div>
+              </div>
+            </div>
+            
+            <p className="text-lg opacity-90 text-center">
+              После этого цена вырастет до 1990 ₽
             </p>
           </div>
           
@@ -316,57 +389,6 @@ const Index = () => {
           </Accordion>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">Похудей за 21 день</h3>
-              <p className="text-gray-400">
-                Эффективный курс для здорового похудения без стресса и голодовок.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Поддержка</h4>
-              <div className="space-y-2 text-gray-400">
-                <p>support@course21.ru</p>
-                <p>+7 (800) 123-45-67</p>
-                <p>Ежедневно 9:00 - 21:00</p>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Социальные сети</h4>
-              <div className="flex gap-4">
-                <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors cursor-pointer">
-                  <Icon name="Instagram" size={20} />
-                </div>
-                <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors cursor-pointer">
-                  <Icon name="Send" size={20} />
-                </div>
-                <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-green-600 transition-colors cursor-pointer">
-                  <Icon name="Youtube" size={20} />
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Информация</h4>
-              <div className="space-y-2 text-gray-400">
-                <p className="hover:text-white cursor-pointer">Политика конфиденциальности</p>
-                <p className="hover:text-white cursor-pointer">Условия использования</p>
-                <p className="hover:text-white cursor-pointer">Возврат средств</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Похудей за 21 день. Все права защищены.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
