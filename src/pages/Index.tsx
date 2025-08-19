@@ -139,15 +139,22 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-green-50 to-orange-50 py-20 px-4">
+      <section className="relative bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-30 animate-float"></div>
+          <div className="absolute top-32 right-20 w-16 h-16 bg-cyan-400 rounded-full opacity-30 animate-bounce"></div>
+          <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-emerald-400 rounded-full opacity-30 animate-pulse"></div>
+          <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full opacity-20 animate-spin"></div>
+          <div className="absolute bottom-32 right-10 w-28 h-28 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full opacity-25 animate-float"></div>
+        </div>
         <div className="max-w-6xl mx-auto text-center">
-          <Badge className="mb-6 bg-green-100 text-green-800 hover:bg-green-100">
+          <Badge className="mb-6 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 hover:from-purple-200 hover:to-pink-200">
             ⭐ Уже помогли похудеть 2000+ женщинам
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Похудей за{" "}
-            <span className="bg-gradient-to-r from-green-600 to-orange-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 bg-clip-text text-transparent">
               21 день
             </span>
             <br />
@@ -160,7 +167,7 @@ const Index = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all animate-pulse">
+            <Button asChild size="lg" className="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 hover:from-pink-600 hover:via-purple-600 hover:to-orange-600 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all animate-glow relative overflow-hidden">
               <a href="https://t.me/start21day_bot?start=dGFyaWZfNjcyNDAy" target="_blank" rel="noopener noreferrer">
                 Начать сейчас за 990 ₽
                 <Icon name="ArrowRight" size={20} className="ml-2" />
@@ -174,11 +181,11 @@ const Index = () => {
 
           <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
             <div className="flex items-center">
-              <Icon name="Shield" size={16} className="mr-2 text-green-600" />
+              <Icon name="Shield" size={16} className="mr-2 text-purple-600" />
               Гарантия результата
             </div>
             <div className="flex items-center">
-              <Icon name="Users" size={16} className="mr-2 text-orange-500" />
+              <Icon name="Users" size={16} className="mr-2 text-pink-500" />
               2000+ довольных клиентов
             </div>
           </div>
@@ -201,7 +208,7 @@ const Index = () => {
             {benefits.map((benefit, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-all hover:-translate-y-1 border-none bg-gradient-to-br from-white to-gray-50">
                 <CardContent className="p-8">
-                  <div className="bg-gradient-to-br from-green-500 to-orange-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <div className="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg animate-float">
                     <Icon name={benefit.icon} size={28} className="text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -218,7 +225,7 @@ const Index = () => {
       </section>
 
       {/* What's Included Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-orange-50/50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -233,7 +240,7 @@ const Index = () => {
             {courseIncludes.map((item, index) => (
               <Card key={index} className="hover:shadow-lg transition-all">
                 <CardContent className="p-8 flex items-start gap-6">
-                  <div className="bg-gradient-to-br from-green-500 to-orange-500 w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 animate-float">
                     <Icon name={item.icon} size={24} className="text-white" />
                   </div>
                   <div>
@@ -277,7 +284,7 @@ const Index = () => {
                     </div>
                     <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
                     <p className="text-gray-600">{testimonial.age}</p>
-                    <Badge className="mt-2 bg-green-100 text-green-800">
+                    <Badge className="mt-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800">
                       {testimonial.result}
                     </Badge>
                   </div>
@@ -292,7 +299,11 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-green-600 to-orange-500 text-white">
+      <section className="py-20 px-4 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-40 h-40 bg-gradient-to-r from-yellow-400/20 to-pink-400/20 rounded-full animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-60 h-60 bg-gradient-to-r from-purple-400/20 to-orange-400/20 rounded-full animate-pulse"></div>
+        </div>
         <div className="max-w-4xl mx-auto text-center">
           <Badge className="mb-6 bg-white/20 text-white hover:bg-white/20">
             ⏰ Ограниченное предложение
@@ -347,7 +358,7 @@ const Index = () => {
             </p>
           </div>
           
-          <Button asChild size="lg" className="bg-white text-green-700 hover:bg-gray-100 text-xl px-12 py-6 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all hover:scale-105">
+          <Button asChild size="lg" className="bg-white text-purple-700 hover:bg-gray-100 text-xl px-12 py-6 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all hover:scale-105 animate-glow relative overflow-hidden">
             <a href="https://t.me/start21day_bot?start=dGFyaWZfNjcyNDAy" target="_blank" rel="noopener noreferrer">
               Получить доступ сейчас
               <Icon name="Sparkles" size={24} className="ml-3" />
@@ -382,7 +393,7 @@ const Index = () => {
           <Accordion type="single" collapsible className="space-y-4">
             {faqItems.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg px-6">
-                <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 hover:text-green-600">
+                <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 hover:text-purple-600">
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 leading-relaxed">
