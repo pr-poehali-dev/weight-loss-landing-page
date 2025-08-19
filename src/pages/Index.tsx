@@ -160,9 +160,11 @@ const Index = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all animate-pulse">
-              Начать сейчас за 990 ₽
-              <Icon name="ArrowRight" size={20} className="ml-2" />
+            <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all animate-pulse">
+              <a href="https://t.me/start21day_bot?start=dGFyaWZfNjcyNDAy" target="_blank" rel="noopener noreferrer">
+                Начать сейчас за 990 ₽
+                <Icon name="ArrowRight" size={20} className="ml-2" />
+              </a>
             </Button>
             <div className="flex items-center text-gray-600">
               <Icon name="Clock" size={16} className="mr-2" />
@@ -345,9 +347,11 @@ const Index = () => {
             </p>
           </div>
           
-          <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100 text-xl px-12 py-6 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all hover:scale-105">
-            Получить доступ сейчас
-            <Icon name="Sparkles" size={24} className="ml-3" />
+          <Button asChild size="lg" className="bg-white text-green-700 hover:bg-gray-100 text-xl px-12 py-6 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all hover:scale-105">
+            <a href="https://t.me/start21day_bot?start=dGFyaWZfNjcyNDAy" target="_blank" rel="noopener noreferrer">
+              Получить доступ сейчас
+              <Icon name="Sparkles" size={24} className="ml-3" />
+            </a>
           </Button>
           
           <div className="mt-8 flex items-center justify-center gap-6 text-sm opacity-90">
